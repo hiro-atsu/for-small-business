@@ -11,6 +11,7 @@ html{
 }
 
 body {
+    width: 100%;
     font-family: 'Noto Serif JP', serif;
     max-width: 100%;
 }
@@ -27,6 +28,8 @@ a {
 li {
     list-style: none;
 }
+
+
 
 .sec_title {
     font-size: 2rem;
@@ -343,6 +346,7 @@ li {
 #philosophy .item .img {
     width: 100%;
     position: relative;
+    overflow: hidden;
 }
 
 #philosophy .item .img img {
@@ -427,6 +431,7 @@ li {
 #approach .item .img {
     width: 100%;
     position: relative;
+    overflow: hidden;
 }
 
 #approach .item .img img {
@@ -531,6 +536,7 @@ li {
 #portfoli .item .img {
     width: 100%;
     position: relative;
+    overflow: hidden;
 }
 
 #portfoli .item .img img {
@@ -625,6 +631,7 @@ li {
     margin-top: 150px;
     text-align: left;
     position: relative;
+    overflow: hidden;
 }
 
 #secsns .first .img::after{
@@ -731,6 +738,7 @@ li {
 #secsns .second .img {
     width: 80%;
     position: relative;
+    overflow: hidden;
 }
 
 #secsns .second .img::before {
@@ -767,6 +775,7 @@ li {
     width: 80%;
     margin-left: auto;
     position: relative;
+    overflow: hidden;
 }
 
 #secsns .third .img::after {
@@ -868,6 +877,7 @@ li {
 #message .item .img {
     width: 100%;
     position: relative;
+    overflow: hidden;
 }
 
 #message .item .img img {
