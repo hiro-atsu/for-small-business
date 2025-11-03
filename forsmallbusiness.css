@@ -1,0 +1,1280 @@
+@charset "utf-8";
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html{
+    font-size: 100%;
+}
+
+body {
+    font-family: 'Noto Serif JP', serif;
+    max-width: 100%;
+}
+
+img {
+    max-width: 100%;
+}
+
+a {
+    text-decoration: none;
+    color: #121212;
+}
+
+li {
+    list-style: none;
+}
+
+.sec_title {
+    font-size: 2rem;
+    margin-bottom: 60px;
+    letter-spacing: 0.3em;
+    font-family: 'Noto Serif JP', serif;
+    font-weight: 100; /* 400=普通, 600=やや太い, 700=太字 */
+    color: #8d8d8d;
+}
+
+.text {
+    padding: 0 100px;
+    margin-bottom: 100px;
+    position: relative;
+    font-size: 1.5rem;
+    line-height: 1.9;
+}
+
+.text::after{
+    content: "";
+    height: 1px;
+    width: 70px;
+    background-color: #121212;
+    position: absolute;
+    top: -50px;
+    left: 100px;
+}
+
+.fadein {
+    opacity: 0;
+    transform: translateY(20%);
+    transition: 1s;
+}
+
+.fadein.show{
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+
+#header {
+    width: 100%;
+    padding: 30px 0 0 40px;
+    background-color: #fff;
+    z-index: 30;
+    position: relative;
+}
+
+.logo .flex a { 
+    display: flex;
+    line-height: 1;
+    z-index: 30;
+}
+
+.logo img {
+    width: 80px;
+    z-index: 30;
+}
+
+.logo h1 {
+    font-weight: 100;
+    letter-spacing: 0.3em;
+    z-index: 30;
+}
+
+.hamburger{
+    position: absolute;
+    top: 30px;
+    right: 40px;
+    width: 50px;
+    height: 40px;
+    cursor: pointer;
+    transition: 0.5s;
+    z-index: 30;
+}
+
+.hamburger span {
+    width: 40px;
+    height: 4px;
+    background-color: #121212;
+    position: absolute;
+    left: 4px;
+    transition: 0.5s;
+}
+
+.hamburger span:nth-child(1){
+    top: 5px;
+}
+
+.hamburger span:nth-child(2){
+    top: 15px;
+}
+
+.hamburger span:nth-child(3){
+    top: 25px;
+}
+
+.hamburger.active span:nth-child(1){
+    top: 15px;
+    background-color: #fff;
+    transform: rotate(-45deg);
+}
+
+.hamburger.active span:nth-child(2),
+.hamburger.active span:nth-child(3){
+    top: 15px;
+    transform: rotate(45deg);
+    background-color: #fff;
+}
+
+#nav {
+    opacity: 0;
+    transform: translateY(-100%);
+    transition: 0.5s;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 50vh;
+    background-color: rgb(0, 0, 0, 0.7);
+}
+
+#nav.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+#nav ul {
+    text-align: center;
+    padding-top: 60px;
+}
+
+#nav li {
+    padding: 15px 0;
+    font-weight: bold;
+    letter-spacing: 0.3em;
+}
+
+#nav li a{
+    color: #fff;
+}
+
+#header p {
+    letter-spacing: 0.3em;
+    font-size: 1.5rem;
+    font-weight: 100;
+    padding-left: 10px;
+    color: #8d8d8d;
+}
+
+#top {
+    padding-top: 250px;
+    margin-bottom: 100px;
+}
+
+#top .item {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 50px;
+    margin-bottom: 30px;
+}
+
+#top .item .top_text {
+    width: 60%;
+    margin-top: 100px;
+    padding: 0;
+    position: relative;
+}
+
+#top .item .top_text::after{
+    content: "";
+    height: 3px;
+    width: 200px;
+    background-color: #121212;
+    position: absolute;
+    top: -100px;
+    left: 0;
+}
+
+#top .item .title {
+    font-size: 6rem;
+}
+
+.text-animate {
+    display: inline-block;
+}
+
+.text-animate span{
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(20%);
+    animation: slideup 0.6s ease forwards;
+}
+
+@keyframes slideup {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.text-animate span:nth-child(1) { animation-delay: 0.1s; }
+.text-animate span:nth-child(2) { animation-delay: 0.2s; }
+.text-animate span:nth-child(3) { animation-delay: 0.3s; }
+.text-animate span:nth-child(4) { animation-delay: 0.4s; }
+.text-animate span:nth-child(5) { animation-delay: 0.5s; }
+.text-animate span:nth-child(6) { animation-delay: 0.6s; }
+.text-animate span:nth-child(7) { animation-delay: 0.7s; }
+.text-animate span:nth-child(8) { animation-delay: 0.8s; }
+.text-animate span:nth-child(9) { animation-delay: 0.9s; }
+.text-animate span:nth-child(10) { animation-delay: 1s; }
+.text-animate span:nth-child(11) { animation-delay: 1.1s; }
+.text-animate span:nth-child(12) { animation-delay: 1.2s; }
+.text-animate span:nth-child(13) { animation-delay: 1.3s; }
+.text-animate span:nth-child(14) { animation-delay: 1.4s; }
+.text-animate span:nth-child(15) { animation-delay: 1.5s; }
+.text-animate span:nth-child(16) { animation-delay: 1.6s; }
+
+#top .item .img {
+    width: 40%;
+}
+
+#top .item .img img {
+    width: 70%;
+}
+
+#top p {
+    text-align: center;
+    letter-spacing: 0.5em;
+    font-size: 2rem;
+}
+
+#top .btn {
+    margin: 50px auto 0 auto;
+    border: #121212 solid 1px;
+    border-radius: 50%;
+    width: 280px;
+    padding: 90px 0;
+    display: block;
+    text-align: center;
+    align-items: center;
+    font-size: 2.5rem;
+    position: relative;
+    transition: 0.3s;
+}
+
+#top .btn:hover {
+    transform: scale(1.05);
+    opacity: 0.7;
+}
+
+#top .btn::after {
+    content: "";
+    border-left: #121212 30px solid;
+    border-bottom: transparent solid 15px;
+    border-top: transparent solid 15px;
+    position: absolute;
+    bottom: 18%;
+    left: 45%;
+    margin: 0 auto;
+}
+
+#philosophy {
+    padding-top: 200px;
+    position: relative;
+}
+
+#philosophy::before {
+    content: "";
+    width: 90%;
+    height: 1px;
+    background-color: #8d8d8d;
+    display: block;
+    margin: 0 auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+#philosophy .sec_title {
+    margin-left: 5%;
+}
+
+#philosophy .item {
+    display: flex;
+    flex-direction: row-reverse;
+    margin-bottom: 230px;
+}
+
+#philosophy .item .title {
+    writing-mode: vertical-lr;
+    white-space: nowrap;
+    margin-left: 130px;
+    margin-right: 80px;
+    padding-right: 30px;
+    font-size: 2rem;
+    border-right: #121212 solid 3px;
+    display: inline-block;
+    align-items: flex-start;
+    line-height: 1;
+}
+
+#philosophy .item .title .spec{
+    letter-spacing: 0.5em;
+}
+
+#philosophy .item .title .spec span:last-child {
+    margin-bottom: -0.5em;
+}
+
+#philosophy .item .img {
+    width: 100%;
+    position: relative;
+}
+
+#philosophy .item .img img {
+    width: 100%;
+}
+
+#philosophy .item .img::before {
+    content: "";
+    height: 250px;
+    width: 250px;
+    background-color: #fff;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+#philosophy .item .img::after {
+    content: "";
+    height: 200px;
+    width: 350px;
+    background-color: #fff;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+#philosophy .text p {
+    margin-bottom: 50px;
+}
+
+#approach {
+    margin-bottom: 200px;
+    padding-top: 200px;
+    position: relative;
+}
+
+#approach::before {
+    content: "";
+    width: 90%;
+    height: 1px;
+    background-color: #8d8d8d;
+    display: block;
+    margin: 0 auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+#approach .sec_title {
+    display: flex;
+    flex-direction: row-reverse;
+    margin-right: 5%;
+}
+
+#approach .item {
+    display: flex;
+    margin-bottom: 230px;
+}
+
+#approach .item .title {
+    writing-mode: vertical-lr;
+    white-space: nowrap;
+    margin-left: 80px;
+    margin-right: 130px;
+    padding-left: 30px;
+    font-size: 2rem;
+    border-left: #121212 solid 3px;
+    display: inline-block;
+    align-items: flex-start;
+    line-height: 1;
+}
+
+#approach .item .title .spec{
+    letter-spacing: 0.5em;
+}
+
+#approach .item .title .spec span:last-child {
+    margin-bottom: -0.5em;
+}
+
+#approach .item .img {
+    width: 100%;
+    position: relative;
+}
+
+#approach .item .img img {
+    width: 100%;
+}
+
+#approach .item .img::before {
+    content: "";
+    height: 250px;
+    width: 250px;
+    background-color: #fff;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#approach .item .img::after {
+    content: "";
+    height: 200px;
+    width: 350px;
+    background-color: #fff;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+#approach .content {
+    padding: 0 300px;
+}
+
+#approach .app_item {
+    border: #121212 solid 1px;
+    border-radius: 30px;
+    padding: 30px 40px;
+    margin-bottom: 30px;
+}
+
+ #approach .app_item p {
+    font-size: 1.5rem;
+}
+
+#approach .app_item img {
+    width: 150px;
+}
+
+#approach .app_item .app_title {
+    padding: 20px 0;
+    font-weight: bold;
+    font-size: 1.7rem;
+}
+
+#portfoli {
+    margin-bottom: 200px;
+    padding-top: 200px;
+    position: relative;
+}
+
+#portfoli::before {
+    content: "";
+    width: 90%;
+    height: 1px;
+    background-color: #8d8d8d;
+    display: block;
+    margin: 0 auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+#portfoli .sec_title {
+    margin-left: 5%;
+}
+
+#portfoli .item {
+    display: flex;
+    flex-direction: row-reverse;
+    margin-bottom: 230px;
+}
+
+#portfoli .item .title {
+    writing-mode: vertical-lr;
+    white-space: nowrap;
+    margin-left: 130px;
+    margin-right: 80px;
+    padding-right: 30px;
+    font-size: 2rem;
+    border-right: #121212 solid 3px;
+    display: inline-block;
+    align-items: flex-start;
+    line-height: 1;
+}
+
+#portfoli .item .title .spec{
+    letter-spacing: 0.5em;
+}
+
+#portfoli .item .title .spec span:last-child {
+    margin-bottom: -0.5em;
+}
+
+#portfoli .item .img {
+    width: 100%;
+    position: relative;
+}
+
+#portfoli .item .img img {
+    width: 100%;
+}
+
+#portfoli .item .img::before {
+    content: "";
+    height: 250px;
+    width: 250px;
+    background-color: #fff;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+#portfoli .item .img::after {
+    content: "";
+    height: 200px;
+    width: 350px;
+    background-color: #fff;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+#portfoli .scllor {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 0 100px;
+    gap: 40px;
+    scroll-behavior: smooth; 
+    scrollbar-width: none;      /* Firefox */
+    -ms-overflow-style: none;   /* IE・Edge旧 */
+}
+
+#portfoli .scllor .portfoli_item {
+    flex-shrink: 0;  
+    width: 300px;
+    border: #121212 solid 1px;
+    border-radius: 30px; 
+    padding: 50px 30px 10px 30px;
+}
+
+#portfoli .scllor .portfoli_item img {
+    width: 90px;
+}
+
+#portfoli .scllor .portfoli_item .portfoli_title {
+    padding: 15px 0;
+    font-weight: bold;
+    font-size: 1.25rem;
+}
+
+#secsns {
+    margin-bottom: 300px;
+    padding-top: 200px;
+    position: relative;
+}
+
+#secsns::before {
+    content: "";
+    width: 90%;
+    height: 1px;
+    background-color: #8d8d8d;
+    display: block;
+    margin: 0 auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+#secsns .sec_title {
+    display: flex;
+    flex-direction: row-reverse;
+    margin-right: 5%;
+}
+
+#secsns .first {
+    display: flex;
+    padding-left: 40px;
+    margin-bottom: 100px;
+    position: relative;
+}
+
+#secsns .first .img{
+    width: 80%;
+    margin-top: 150px;
+    text-align: left;
+    position: relative;
+}
+
+#secsns .first .img::after{
+    content: "";
+    height: 40%;
+    width: 20%;
+    background-color: #fff;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#secsns .first .img img {
+    width: 100%;
+}
+
+#secsns .first .item {
+    width: 20%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column-reverse;
+    writing-mode: vertical-lr;
+    font-size: 2rem;
+    letter-spacing: 0.4em;
+}
+
+#secsns .first .item p:nth-child(1){
+    position: absolute;
+    top: 0;
+    left: 28%;
+    z-index: 10;
+    font-size: 2.7rem;
+}
+
+#secsns .first .item p:nth-child(2) {
+    position: absolute;
+    top: 6%;
+    left: 14%;
+}
+
+#secsns .first .item p:nth-child(3)  {
+    position: absolute;
+    top: 15%;
+    left: 5%;
+}
+
+#secsns .item span {
+    writing-mode: horizontal-tb;
+    text-orientation: mixed;
+    display: inline-block;
+    transform: rotate(0deg);
+    font-size: 1em;
+    line-height: 1;
+    vertical-align: middle;
+    letter-spacing: 0;
+    position: relative;
+    left: -0.23em;
+    margin: 3px 0;
+}
+
+
+#secsns .second {
+    display: flex;
+    flex-direction: row-reverse;
+    padding-right: 40px;
+    margin-bottom: 150px;
+    position: relative;
+}
+
+#secsns .second .item {
+    width: 20%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column-reverse;
+    writing-mode: vertical-lr;
+    white-space: nowrap;
+    font-size: 2rem;
+    letter-spacing: 0.4em;
+}
+
+#secsns .second .item p:nth-child(1){
+    position: absolute;
+    top: 100px;
+    right: 10%;
+    font-size: 2.7rem;
+}
+
+#secsns .second .item p:nth-child(2) {
+    position: absolute;
+    top: 300px;
+    right: 21%;
+    z-index: 10;
+}
+
+#secsns .second .item p:nth-child(3)  {
+    position: absolute;
+    top: 450px;
+    right: 27%;
+    z-index: 10;
+}
+
+
+
+#secsns .second .img {
+    width: 80%;
+    position: relative;
+}
+
+#secsns .second .img::before {
+    content: "";
+    height: 25%;
+    width: 30%;
+    background-color: #fff;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+#secsns .second .img::after {
+    content: "";
+    height: 70%;
+    width: 22%;
+    background-color: #fff;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+#secsns .second .img img {
+    width: 100%;
+}
+
+#secsns .third {
+    display: flex;
+    flex-direction: column-reverse;
+    position: relative;
+}
+
+#secsns .third .img {
+    width: 80%;
+    margin-left: auto;
+    position: relative;
+}
+
+#secsns .third .img::after {
+    content: "";
+    height: 27%;
+    width: 16%;
+    background-color: #fff;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+#secsns .third .img::before {
+    content: "";
+    height: 35%;
+    width: 45%;
+    background-color: #fff;
+    position: absolute;
+    bottom: 0;
+    left: 0; 
+}
+
+#secsns .third .img img {
+    width: 100%;
+}
+
+#secsns .third .item {
+    writing-mode: vertical-lr;
+    font-size: 2rem;
+    position: relative;
+    white-space: nowrap;
+    height: 400px;
+    letter-spacing: 0.3em;
+}
+
+#secsns .third .item p:nth-of-type(1) {
+    position: absolute;
+    top: -50%;
+    left: 25%;
+    z-index: 10;
+}
+
+#secsns .third .item p:nth-of-type(2) {
+    position: absolute;
+    top: -15%;
+    left: 31%;
+    z-index: 10;
+}
+
+#secsns .third .item p:nth-of-type(3) {
+    position: absolute;
+    top: 35%;
+    left: 37%;
+    z-index: 10; 
+}
+
+#message {
+    margin-bottom: 200px;
+    padding-top: 200px;
+    position: relative;
+}
+
+#message::before {
+    content: "";
+    width: 90%;
+    height: 1px;
+    background-color: #8d8d8d;
+    display: block;
+    margin: 0 auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+#message .sec_title {
+    margin-left: 5%;
+}
+
+#message .item {
+    display: flex;
+    flex-direction: row-reverse;
+    margin-bottom: 230px;
+}
+
+#message .item .title {
+    writing-mode: vertical-lr;
+    margin-left: 130px;
+    margin-right: 80px;
+    padding-right: 30px;
+    font-size: 2rem;
+    letter-spacing: 0.4em;
+    border-right: #121212 solid 3px;
+    display: inline-block;
+    align-items: flex-start;
+    line-height: 1;
+}
+
+#message .item .img {
+    width: 100%;
+    position: relative;
+}
+
+#message .item .img img {
+    width: 100%;
+}
+
+#message .item .img::before {
+    content: "";
+    height: 25%;
+    width: 30%;
+    background-color: #fff;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#message .item .img::after {
+    content: "";
+    height: 40%;
+    width: 30%;
+    background-color: #fff;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+#message .text p {
+    margin-bottom: 30px;
+}
+
+.mail {
+    padding: 100px 30px 0 30px;
+    margin-bottom: 100px;
+    position: relative;
+}
+
+.mail::before {
+    content: "";
+    width: 90%;
+    height: 1px;
+    background-color: #8d8d8d;
+    display: block;
+    margin: 0 auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+.mail .item {
+    width: 80%;
+    background-color: #f1f1f1;
+    padding: 80px 30px;
+    border-radius: 20px;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.mail .item .title {
+    font-weight: bold;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.mail .item p{
+    font-size: 1.3rem;
+}
+
+.mail .item .btn {
+    margin: 20px auto;
+    border: #121212 solid 1px;
+    border-radius: 50px;
+    width: 80%;
+    padding: 20px 0;
+    transition: 0.3s;
+    display: block; 
+    font-size: 1.3rem;
+}
+
+.mail .item .btn:hover {
+    background-color: #121212;
+    color: #fff;
+}
+
+.mail .item .coment {
+    color: #838383;
+}
+
+#footer {
+    padding-bottom: 70px;
+    text-align: center;
+}
+
+#footer .info a {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+#footer img {
+    width: 60px;
+}
+
+#footer h1 {
+    font-size: 1rem;
+    text-align: left;
+}
+
+#footer .copy {
+    letter-spacing: 0.3em;
+    color: #8d8d8d;
+}
+
+@media screen and (max-width:768px){
+    .sec_title {
+        font-size: 1.5rem;
+        margin-bottom: 60px;
+        letter-spacing: 0.5em;
+    }
+
+    .text {
+        padding: 0 30px;
+    }
+
+    .text::after{
+        top: -50px;
+        left: 30px;
+    }
+
+    #header {
+        width: 100%;
+        padding: 60px 0 0 20px;
+        background-color: #fff;
+        z-index: 30;
+        position: relative;
+    }
+
+    .logo .flex a { 
+        display: flex;
+        z-index: 30;
+    }
+
+    .logo img {
+        width: 60px;
+        z-index: 30;
+    }
+
+    .logo h1 {
+        letter-spacing: 0.5em;
+        line-height: 1.2;
+        font-size: 1.2rem;
+    }
+
+    .hamburger{
+        top: 60px;
+        right: 20px;
+    }
+
+    #top {
+        padding-top: 200px;
+        margin-bottom: 100px;
+    }
+
+    #top .item {
+        padding-left: 30px;
+        margin-bottom: 30px;
+    }
+
+    #top .item .top_text {
+        margin-top: 80px;
+    }
+
+    #top .item .top_text::after{
+        content: "";
+        height: 3px;
+        width: 120px;
+        background-color: #121212;
+        position: absolute;
+        top: -100px;
+        left: 0;
+    }
+
+    #top .item .title {
+        font-size: 3.2rem;
+    }
+
+    #top p {
+        letter-spacing: 0;
+    }
+
+    #philosophy .item {
+        margin-bottom: 180px;
+    }
+
+    #philosophy .item .title {
+        margin-left: 70px;
+        margin-right: 40px;
+        padding-right: 20px;
+        font-size: 1.6rem;
+    }
+
+    #philosophy .item .img {
+        width: 100%;
+        position: relative;
+    }
+
+    #philosophy .item .img img {
+        width: 100%;
+    }
+
+    #philosophy .item .img::before {
+        height: 100px;
+        width: 100px;
+    }
+
+    #philosophy .item .img::after {
+        height: 100px;
+        width: 180px;
+    }
+
+    #philosophy .text p {
+        margin-bottom: 30px;
+    }
+
+    #approach .item {
+        margin-bottom: 180px;
+    }
+
+    #approach .item .title {
+        margin-left: 40px;
+        margin-right: 70px;
+        padding-left: 20px;
+        font-size: 1.6rem;
+    }
+
+    #approach .item .img::before {
+        height: 110px;
+        width: 120px;
+    }
+
+    #approach .item .img::after {
+        height: 100px;
+        width: 200px;
+    }
+
+    #approach .content {
+        padding: 0 20px;
+    }
+
+    #approach .app_item {
+        border: #121212 solid 1px;
+        border-radius: 30px;
+        padding: 30px 40px;
+        margin-bottom: 30px;
+    }
+
+    #approach .app_item p {
+        font-size: 1.5rem;
+    }
+
+    #approach .app_item img {
+        width: 150px;
+    }
+
+    #approach .app_item .app_title {
+        font-size: 1.7rem;
+    }
+
+    #portfoli .item {
+        margin-bottom: 180px;
+    }
+
+    #portfoli .item .title {
+        margin-left: 70px;
+        margin-right: 40px;
+        padding-right: 20px;
+        font-size: 1.6rem;
+    }
+
+    #portfoli .item .img::before {
+        height: 120px;
+        width: 100px;
+    }
+
+    #portfoli .item .img::after {
+        height: 120px;
+        width: 200px;
+    }
+
+    #portfoli .scllor {
+        padding: 0 20px;
+        gap: 30px;
+    }
+
+    #portfoli .scllor .portfoli_item {
+        width: 400px;
+        height: 440px;
+        border: #121212 solid 1px;
+        border-radius: 30px; 
+        padding: 20px 30px 20px 30px;
+    }
+
+    #portfoli .scllor .portfoli_item img {
+        width: 150px;
+    }
+
+    #portfoli .scllor .portfoli_item .portfoli_title {
+        padding: 20px 0;
+        font-size: 1.6rem;
+    }
+
+    #portfoli .scllor .portfoli_item p {
+        font-size: 1.5rem;
+        line-height: 1.9;
+    }
+
+    #secsns .first {
+        margin-bottom: 130px;
+    }
+
+    #secsns .first .item {
+        font-size: 1.2rem;
+        white-space: nowrap;
+        letter-spacing: 0.2em;
+    }
+
+    #secsns .first .item p:nth-child(1){
+        position: absolute;
+        top: 0;
+        left: 28%;
+        z-index: 10;
+        font-size: 1.9rem;
+    }
+
+    #secsns .first .item p:nth-child(2) {
+        position: absolute;
+        top: 5%;
+        left: 14%;
+    }
+
+    #secsns .first .item p:nth-child(3)  {
+        position: absolute;
+        top: 19%;
+        left: 6%;
+    }
+
+    #secsns .second .item {
+        font-size: 1.2rem;
+        letter-spacing: 0.2em;
+    }
+
+    #secsns .second .item p:nth-child(1){
+        top: 17%;
+        right: 10%;
+        font-size: 1.8rem;
+    }
+
+    #secsns .second .item p:nth-child(2) {
+        top: 45%;
+        right: 21%;
+        z-index: 10;
+    }
+
+    #secsns .second .item p:nth-child(3)  {
+        top: 66%;
+        right: 27%;
+        z-index: 10;
+    }
+
+    #secsns .third .item {
+        font-size: 1.6rem;
+    }
+
+    #secsns .third .item p:nth-of-type(1) {
+        top: -18%;
+    }
+
+    #secsns .third .item p:nth-of-type(2) {
+        position: absolute;
+        top: 9%;
+        left: 34%;
+        z-index: 10;
+    }
+
+    #secsns .third .item p:nth-of-type(3) {
+        position: absolute;
+        top: 49%;
+        left: 43%;
+        z-index: 10; 
+    }
+
+    #message .item {
+        display: flex;
+        flex-direction: row-reverse;
+        margin-bottom: 130px;
+    }
+
+    #message .item .title {
+        margin-left: 70px;
+        margin-right: 40px;
+        padding-right: 20px;
+        font-size: 1.6rem;
+    }
+
+    .mail .item {
+        width: 100%;
+    }
+
+
+}
