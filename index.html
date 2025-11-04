@@ -7,6 +7,7 @@
     <meta name="description" content="For Small Businessは、中小企業のブランド価値を高めるためのコンサルティング・デザインサービスです。ITとデザインの力で、あなたの事業をもう一歩前へ。">
     <link rel="icon" href="./images/favicon.ico" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&family=M+PLUS+1p:wght@400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="forsmallbusiness.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery-inview@1.1.2/jquery.inview.min.js"></script>
@@ -15,12 +16,10 @@
 <body>
     <header id="header">
         <div class="logo">
-            <div class="flex">
-                <a href="#">
-                    <img src="https://github.com/hiro-atsu/for-small-business/blob/main/forsmallbusiness:img/image%201.png?raw=true" alt="">
-                    <h1>FOR　SMALL<br>BUSINESS</h1>
-                </a>
-            </div>
+            <a href="#">
+                <img src="https://github.com/hiro-atsu/for-small-business/blob/main/forsmallbusiness:img/image%201.png?raw=true" alt="">
+                <h1>FOR<br>SMALL<br>BUSINESS</h1>
+             </a>
         </div>
         <p>小さな事業専門の投資</p>
         <nav id="nav">
@@ -41,18 +40,35 @@
     <main>
         <section id="top">
             <div class="item">
-                <div class="top_text">
-                   <h2 class="title text-animate">
-                        <span>あ</span><span>な</span><span>た</span><span>の</span><span>事</span><span>業</span><span>を</span><span>、</span><br>
-                        <span>も</span><span>う</span><span>一</span><span>歩</span><span>前</span><span>へ</span><span>。</span>
+                <div class="next_text">
+                    <h2 class="title text-animate">
+                        <span>新</span><span>し</span><span>い</span><span>投</span><span>資</span><span>の</span><span class="bold">カ</span><span class="bold">タ</span><span class="bold">チ</span><span class="bold">。</span>
                     </h2>
                 </div>
                 <div class="img">
                     <img src="https://github.com/hiro-atsu/for-small-business/blob/main/forsmallbusiness:img/stone%201.png?raw=true" alt="">
+                    <div class="shadow"></div>
+                </div>
+                 <div class="top_text">
+                   <h2 class="title text-animate">
+                        <span>あ</span><span>な</span><span>た</span><span>の</span><span>事</span><span>業</span><span>を</span>
+                        <span>も</span><span>う</span><span>一</span><span>歩</span><span>前</span><span>へ</span>
+                    </h2>
                 </div>
             </div>
-            <p>投資と業務改善で、共に原石を光らせませんか？</p>
-            <a class="btn fadein slide-up" href="#">今すぐ<br>無料診断</a>
+            <div class="circle-wrap">
+                <a class="btn fadein slide-up" href="#">今すぐ<br><span>無料診断</span></a>
+                <svg viewBox="0 0 300 300" class="circle-text">
+                    <defs>
+                    <path id="circlePath" d="M150,150 m-120,0 a120,120 0 1,1 240,0 a120,120 0 1,1 -240,0"/>
+                    </defs>
+                    <text>
+                    <textPath xlink:href="#circlePath">
+                        あなたの事業は投資対象になる!?匿名・3分で完了!
+                    </textPath>
+                    </text>
+                </svg>
+            </div>
         </section>
         <section id="philosophy">
             <h2 class="sec_title">PHILOSOPHY</h2>
@@ -271,7 +287,7 @@
             <div class="info">
                 <a href="#">
                     <img src="https://github.com/hiro-atsu/for-small-business/blob/main/forsmallbusiness:img/image%201.png?raw=true" alt="">
-                    <h1>FOR　SMALL<br>BUSINESS</h1>
+                    <h1>FOR<br>SMALL<br>BUSINESS</h1>
                 </a>
             </div>
         </div>
