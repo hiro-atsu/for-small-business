@@ -17,7 +17,9 @@ body {
 }
 
 img {
-    max-width: 100%;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
 }
 
 a {
@@ -44,7 +46,7 @@ li {
     padding: 0 100px;
     margin-bottom: 100px;
     position: relative;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     line-height: 1.9;
 }
 
@@ -60,8 +62,8 @@ li {
 
 .fadein {
     opacity: 0;
-    transform: translateY(20%);
-    transition: 1s;
+    transform: translateY(40%);
+    transition:  all 1.2s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
 .fadein.show{
@@ -73,13 +75,13 @@ li {
 
 #header {
     width: 100%;
-    padding: 30px 0 0 40px;
+    padding: 30px 0 5px 40px;
     background-color: #fff;
     z-index: 30;
-    position: relative;
+    position: fixed;
 }
 
-.logo .flex a { 
+.logo a { 
     display: flex;
     line-height: 1;
     z-index: 30;
@@ -90,53 +92,55 @@ li {
     z-index: 30;
 }
 
-.logo h1 {
-    font-weight: 100;
-    letter-spacing: 0.3em;
-    z-index: 30;
+.logo h1 {  
+    font-family: 'Noto Sans JP', 'M PLUS 1p', sans-serif;
+    font-weight: 900;       /* ここを900にする */
+    font-size: 1.3rem;      /* お好みで */
+    letter-spacing: 0.05em; /* 微調整 */
+    line-height: 1;
 }
 
 .hamburger{
-    position: absolute;
+    position: fixed;
     top: 30px;
     right: 40px;
-    width: 50px;
+    width: 60px;
     height: 40px;
     cursor: pointer;
     transition: 0.5s;
     z-index: 30;
+    display: flex;
 }
 
 .hamburger span {
-    width: 40px;
-    height: 4px;
+    width: 20px;
+    height: 20px;
+    display: block;
     background-color: #121212;
     position: absolute;
-    left: 4px;
     transition: 0.5s;
 }
 
 .hamburger span:nth-child(1){
-    top: 5px;
+    border-radius: 50%;
+    left: 0;
 }
 
 .hamburger span:nth-child(2){
-    top: 15px;
+    left: 22px;
 }
 
 .hamburger span:nth-child(3){
-    top: 25px;
+    left: 45px;
 }
 
 .hamburger.active span:nth-child(1){
-    top: 15px;
     background-color: #fff;
     transform: rotate(-45deg);
 }
 
 .hamburger.active span:nth-child(2),
 .hamburger.active span:nth-child(3){
-    top: 15px;
     transform: rotate(45deg);
     background-color: #fff;
 }
@@ -175,44 +179,84 @@ li {
 }
 
 #header p {
-    letter-spacing: 0.3em;
-    font-size: 1.5rem;
+    font-size: 0.8rem;
     font-weight: 100;
-    padding-left: 10px;
+    padding-left: 20px;
+    margin-top: -10px;
     color: #8d8d8d;
 }
 
 #top {
-    padding-top: 250px;
-    margin-bottom: 100px;
+  position: relative;
+  height: 110vh;
+  overflow: hidden;
+  padding-top: 123px;
+  margin-bottom: 100px;
 }
 
+/* ---------- 各要素の配置 ---------- */
 #top .item {
-    display: flex;
-    justify-content: space-between;
-    padding-left: 50px;
-    margin-bottom: 30px;
+  width: 100%;
+  height: 100%;
+  position: relative;
 }
 
-#top .item .top_text {
-    width: 60%;
-    margin-top: 100px;
-    padding: 0;
-    position: relative;
+/* 左のタイトル */
+#top .next_text {
+  position: absolute;
+  left: 33%;
+  top: 22%;
 }
 
-#top .item .top_text::after{
-    content: "";
-    height: 3px;
-    width: 200px;
-    background-color: #121212;
-    position: absolute;
-    top: -100px;
-    left: 0;
+#top .next_text .title {
+  font-size: 2.3rem;
+  font-family: "Noto Serif JP", serif;
+  writing-mode: vertical-rl;
+  font-weight: normal;
 }
 
-#top .item .title {
-    font-size: 6rem;
+#top .next_text .bold {
+  font-weight: 700;
+}
+
+/* 石画像 */
+#top .img {
+  position: absolute;
+  top:  40%;
+  left: 50%;
+  width: 15%;
+  transform: translate(-50%, -50%);
+}
+
+#top .img img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+#top .img .shadow {
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 20px;
+  background: radial-gradient(ellipse at center, rgba(0,0,0,0.3), transparent 70%);
+  border-radius: 50%;
+}
+
+/* 右の縦書きテキスト */
+#top .top_text {
+  position: absolute;
+  left: 63%;
+  top: 0;
+}
+
+#top .top_text .title {
+  font-size: 2rem;
+  font-family: "Noto Serif JP", serif;
+  writing-mode: vertical-rl;
+  font-weight: normal;
 }
 
 .text-animate {
@@ -250,48 +294,73 @@ li {
 .text-animate span:nth-child(15) { animation-delay: 1.5s; }
 .text-animate span:nth-child(16) { animation-delay: 1.6s; }
 
-#top .item .img {
-    width: 40%;
-}
 
-#top .item .img img {
-    width: 70%;
-}
-
-#top p {
-    text-align: center;
-    letter-spacing: 0.5em;
-    font-size: 2rem;
+/* ---------- 円ボタン＋円周文字 ---------- */
+.circle-wrap {
+  position: absolute;
+  bottom: 5%;
+  right: 28%;
+  width: 300px;
+  height: 300px;
 }
 
 #top .btn {
-    margin: 50px auto 0 auto;
-    border: #121212 solid 1px;
-    border-radius: 50%;
-    width: 280px;
-    padding: 90px 0;
-    display: block;
-    text-align: center;
-    align-items: center;
-    font-size: 2.5rem;
-    position: relative;
-    transition: 0.3s;
+  border: 1px solid #121212;
+  border-radius: 50%;
+  width: 200px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.3rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  font-family: "Noto Serif JP", serif;
+  transition: 0.3s;
+  z-index: 10;
 }
 
-#top .btn:hover {
-    transform: scale(1.05);
-    opacity: 0.7;
+#top .btn span {
+  font-size: 1.8rem;
+  font-weight: bold;
+  line-height: 1.1;
 }
 
 #top .btn::after {
-    content: "";
-    border-left: #121212 30px solid;
-    border-bottom: transparent solid 15px;
-    border-top: transparent solid 15px;
-    position: absolute;
-    bottom: 18%;
-    left: 45%;
-    margin: 0 auto;
+  content: "▶";
+  position: absolute;
+  right: 10%;
+  top: 50%;
+}
+
+#top .btn:hover {
+    transform: translate(-50%, -50%) scale(1.05);
+    opacity: 0.7;
+}
+
+.circle-text {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 300px;
+  height: 300px;
+  animation: rotateText 20s linear infinite;
+}
+
+.circle-text text {
+  font-size: 0.9rem;
+  font-family: "Noto Serif JP", serif;
+  fill: #121212;
+  letter-spacing: 2px;
+}
+
+@keyframes rotateText {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
 #philosophy {
@@ -470,7 +539,7 @@ li {
 }
 
  #approach .app_item p {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
 }
 
 #approach .app_item img {
@@ -938,12 +1007,12 @@ li {
 
 .mail .item .title {
     font-weight: bold;
-    font-size: 2rem;
+    font-size: 1.7rem;
     margin-bottom: 20px;
 }
 
 .mail .item p{
-    font-size: 1.3rem;
+    font-size: 1.2rem;
 }
 
 .mail .item .btn {
@@ -954,7 +1023,7 @@ li {
     padding: 20px 0;
     transition: 0.3s;
     display: block; 
-    font-size: 1.3rem;
+    font-size: 1.2rem;
 }
 
 .mail .item .btn:hover {
@@ -991,6 +1060,8 @@ li {
     color: #8d8d8d;
 }
 
+
+
 @media screen and (max-width:768px){
     .sec_title {
         font-size: 1.5rem;
@@ -1000,6 +1071,7 @@ li {
 
     .text {
         padding: 0 30px;
+        font-size: 1rem;
     }
 
     .text::after{
@@ -1008,64 +1080,42 @@ li {
     }
 
     #header {
-        width: 100%;
-        padding: 60px 0 0 20px;
-        background-color: #fff;
-        z-index: 30;
-        position: relative;
-    }
-
-    .logo .flex a { 
-        display: flex;
-        z-index: 30;
-    }
-
-    .logo img {
-        width: 60px;
-        z-index: 30;
-    }
-
-    .logo h1 {
-        letter-spacing: 0.5em;
-        line-height: 1.2;
-        font-size: 1.2rem;
+        padding: 20px 0 0 20px;
+        position: fixed;
     }
 
     .hamburger{
-        top: 60px;
-        right: 20px;
+        right: 30px;
+    }
+
+    #nav {
+        height: 43vh;
     }
 
     #top {
-        padding-top: 200px;
-        margin-bottom: 100px;
+    padding-top: 108px;
+    margin-bottom: 0;
     }
 
-    #top .item {
-        padding-left: 30px;
-        margin-bottom: 30px;
+    /* 左のタイトル */
+    #top .next_text {
+    left: 27%;
     }
 
-    #top .item .top_text {
-        margin-top: 60px;
+    /* 石画像 */
+    #top .img {
+    width: 23%;
     }
 
-    #top .item .top_text::after{
-        content: "";
-        height: 3px;
-        width: 120px;
-        background-color: #121212;
-        position: absolute;
-        top: -100px;
-        left: 0;
+    /* 右の縦書きテキスト */
+    #top .top_text {
+    left: 66%;
     }
 
-    #top .item .title {
-        font-size: 3.2rem;
-    }
-
-    #top p {
-        letter-spacing: 0;
+    /* ---------- 円ボタン＋円周文字 ---------- */
+    .circle-wrap {
+    bottom: 8%;
+    right: 20%;
     }
 
     #philosophy .item {
@@ -1107,7 +1157,7 @@ li {
     }
 
     #approach .app_item p {
-        font-size: 1.5rem;
+        font-size: 1rem;
     }
 
     #approach .app_item img {
@@ -1115,7 +1165,7 @@ li {
     }
 
     #approach .app_item .app_title {
-        font-size: 1.7rem;
+        font-size: 1.5rem;
     }
 
     #portfoli .item {
@@ -1136,24 +1186,24 @@ li {
 
     #portfoli .scllor .portfoli_item {
         width: 400px;
-        height: 440px;
+        height: 320px;
         border: #121212 solid 1px;
         border-radius: 30px; 
         padding: 20px 30px 20px 30px;
     }
 
     #portfoli .scllor .portfoli_item img {
-        width: 150px;
+        width: 110px;
     }
 
     #portfoli .scllor .portfoli_item .portfoli_title {
-        padding: 20px 0;
-        font-size: 1.6rem;
+        padding: 10px 0;
+        font-size: 1.5rem;
     }
 
     #portfoli .scllor .portfoli_item p {
-        font-size: 1.5rem;
-        line-height: 1.9;
+        font-size: 1.1rem;
+        line-height: 1.5;
     }
 
     #secsns .first {
@@ -1244,6 +1294,19 @@ li {
         font-size: 1.6rem;
     }
 
+
+    .mail .item .title {
+        font-size: 1.5rem;
+    }
+
+    .mail .item p{
+        font-size: 1rem;
+    }
+
+    .mail .item .btn {
+        font-size: 1rem;
+    }
+
     .mail .item {
         width: 100%;
     }
@@ -1258,57 +1321,60 @@ li {
     }
 
     #header {
-        padding: 40px 0 0 20px;
-    }
-
-    .logo .flex a { 
-        display: flex;
-        z-index: 30;
-    }
-
-    .logo img {
-        width: 40px;
-        z-index: 30;
-    }
-
-    .logo h1 {
-        letter-spacing: 0.5em;
-        line-height: 1.2;
-        font-size: 1rem;
-    }
-
-    #header p {
-        font-size: 1rem;
+        padding: 15px 0 0 10px;
+        position: fixed;
     }
 
     .hamburger{
-        top: 40px;
+        right: 30px;
+    }
+
+    #nav {
+        height: 43vh;
     }
 
     #top {
-        padding-top: 200px;
-        margin-bottom: 100px;
+    padding-top: 108px;
+    margin-bottom: 0;
     }
 
-    #top .item {
-        padding-left: 30px;
-        margin-bottom: 30px;
+    /* 左のタイトル */
+    #top .next_text {
+    left: 23%;
     }
 
-    #top .item .top_text {
-        margin-top: 0;
+    /* 石画像 */
+    #top .img {
+    width: 25%;
     }
 
-    #top .item .top_text::after{
-        width: 80px;
+    /* 右の縦書きテキスト */
+    #top .top_text {
+    left: 66%;
     }
 
-    #top .item .title {
-        font-size: 2.1rem;
+    #top .btn {
+        width: 170px;
+        height: 170px;
     }
 
-    #top p {
-        font-size: 1.2rem;
+    #top .btn::after {
+        right: 3%;
+    }
+
+    /* ---------- 円ボタン＋円周文字 ---------- */
+    .circle-wrap {
+        bottom: 15%;
+        right: 5%;
+        width: 200px;
+        height: 200px;
+    }
+
+    .circle-text {
+        width: 230px;
+        height: 230px;
+        top: -7%;
+        left: -7%;
     }
 
     #philosophy .item .title {
@@ -1344,7 +1410,7 @@ li {
     }
 
     #approach .app_item p {
-        font-size: 1.2rem;
+        font-size: 0.8rem;
     }
 
     #approach .app_item img {
@@ -1352,7 +1418,7 @@ li {
     }
 
     #approach .app_item .app_title {
-        font-size: 1.5rem;
+        font-size: 1.3rem;
     }
 
     #portfoli .item {
@@ -1373,12 +1439,12 @@ li {
 
     #portfoli .scllor .portfoli_item {
         width: 350px;
-        height: 400px;
+        height: 300px;
         padding: 20px 30px 0px 30px;
     }
 
     #portfoli .scllor .portfoli_item img {
-        width: 150px;
+        width: 100px;
     }
 
     #portfoli .scllor .portfoli_item .portfoli_title {
@@ -1386,7 +1452,7 @@ li {
     }
 
     #portfoli .scllor .portfoli_item p {
-        font-size: 1.2rem;
+        font-size: 1rem;
     }
 
     #secsns .first .item {
@@ -1452,11 +1518,11 @@ li {
     }
 
     .mail .item .title {
-        font-size: 1.5rem;
+        font-size: 1.2rem;
     }
 
     .mail .item p{
-        font-size: 1.1rem;
+        font-size: 0.8rem;
     }
 
     .mail .item .btn {
