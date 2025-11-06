@@ -82,13 +82,12 @@ li {
 }
 
 .logo a { 
-    display: flex;
     line-height: 1;
     z-index: 30;
 }
 
 .logo img {
-    width: 80px;
+    width: 60px;
     z-index: 30;
 }
 
@@ -98,6 +97,9 @@ li {
     font-size: 1.3rem;      /* お好みで */
     letter-spacing: 0.05em; /* 微調整 */
     line-height: 1;
+    position: absolute;
+    top: 30px;
+    left: 105px;
 }
 
 .hamburger{
@@ -182,23 +184,246 @@ li {
     font-size: 0.8rem;
     font-weight: 100;
     padding-left: 20px;
-    margin-top: -10px;
     color: #8d8d8d;
 }
 
+#header .btn {
+    position: absolute;
+    top: 30px;
+    right: 150px;
+    display: block;
+    width: 80px;
+    padding: 5px 0;
+    border: #fff;
+    background-color: #4759ff;
+    border-radius: 30px;
+    color: #fff;
+    text-align: center;
+    font-size: 0.75rem;
+    z-index: 30;
+    font-weight: 700;
+    font-family: 'Noto Sans JP', 'M PLUS 1p', sans-serif;
+    transition: 1s;
+}
+
+#header .btn:hover {
+    background-color: #001aff;
+}
+
 #top {
+    
   position: relative;
-  height: 110vh;
+  height: 105vh;
   overflow: hidden;
   padding-top: 123px;
   margin-bottom: 100px;
 }
+
+#top::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 110vh;
+  background: rgba(0, 0, 0, 0.2); /* ← ここで暗さを調整（0.3〜0.5くらいがおすすめ） */
+  z-index: 2;
+  pointer-events: none;
+}
+
+#top .next_text,
+#top .top_text,
+#top .img,
+#top .circle-wrap {
+  position: absolute;
+  z-index: 3;
+}
+
 
 /* ---------- 各要素の配置 ---------- */
 #top .item {
   width: 100%;
   height: 100%;
   position: relative;
+  overflow: hidden;
+}
+
+/*背景画像*/
+
+#top .back_img li {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 110vh;
+  opacity: 0;
+  transform: translateX(-2%);
+  animation: fadeSlide 42s infinite;
+}
+
+#top .back_img li:nth-child(1) { animation-delay: 0s; }
+#top .back_img li:nth-child(2) { animation-delay: 6s; }
+#top .back_img li:nth-child(3) { animation-delay: 12s; }
+#top .back_img li:nth-child(4) { animation-delay: 18s; }
+#top .back_img li:nth-child(5) { animation-delay: 24s; }
+#top .back_img li:nth-child(6) { animation-delay: 30s; }
+#top .back_img li:nth-child(7) { animation-delay: 36s; }
+
+#top .back_img li img {
+  width: 105%;
+  height: 110vh;
+  object-fit: cover;
+  transform: translateX(-2%);
+}
+
+/* なめらかで均等なフェード切り替え */
+@keyframes fadeSlide {
+  0% {
+    opacity: 0;
+  }
+  5% {
+    opacity: 1;
+  }
+  20% {
+    opacity: 1;
+  }
+  25% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeSlide {
+  0% {
+    opacity: 0;
+    transform: translateX(-2%) scale(1.05);
+  }
+  5% {
+    opacity: 1;
+    transform: translateX(0%) scale(1);
+  }
+  20% {
+    opacity: 1;
+    transform: translateX(1%) scale(1);
+  }
+  25% {
+    opacity: 0;
+    transform: translateX(2%) scale(1.03);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-2%) scale(1.05);
+  }
+}
+
+/*上の丸*/
+
+button {
+    cursor: pointer;
+}
+
+.circle {
+    position: absolute;
+    left: 10px;
+    gap: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.circle_item {
+    position: relative;
+    width: 60px;
+    height: 60px;
+    z-index: 10;
+    border-radius: 50%;
+}
+
+.circle-inner {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.circle-inner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.circle-outline {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.progress-ring-buttom{
+    fill: none;
+    stroke: #0d0d0d4d;
+    stroke-width: 2px;
+}
+
+.progress-ring {
+  fill: none;                  /* 中を塗らない */
+  stroke: #007bff;             /* 青い線 */
+  stroke-width: 3;             /* 線の太さ */
+  stroke-linecap: round;       /* 丸い線端 */
+  transform: rotate(-90deg);   /* 開始位置を上に */
+  transform-origin: center;
+  stroke-dasharray: 188;       /* 円周の長さ（2πr ≈ 2×3.14×95） */
+  stroke-dashoffset: 188;      /* 初期状態は線が見えない */
+  animation: rotateStroke 42s linear infinite;
+}
+
+.circle_item:nth-child(1) .progress-ring { animation-delay: 0s; }
+.circle_item:nth-child(2) .progress-ring { animation-delay: 6s; }
+.circle_item:nth-child(3) .progress-ring { animation-delay: 12s; }
+.circle_item:nth-child(4) .progress-ring { animation-delay: 18s; }
+.circle_item:nth-child(5) .progress-ring { animation-delay: 24s; }
+.circle_item:nth-child(6) .progress-ring { animation-delay: 30s; }
+.circle_item:nth-child(7) .progress-ring { animation-delay: 36s; }
+
+/* 線が1周して戻るアニメーション */
+@keyframes rotateStroke {
+  0% {
+    opacity: 0;
+    stroke-dashoffset: 188;
+  }
+
+   2% {
+    opacity: 1; /* 開始直後に表示 */
+  }
+
+  15% {
+    opacity: 1;
+    stroke-dashoffset: 0; /* ここで一周完了 */
+  }
+
+  16% {
+    opacity: 0;
+  }
+  
+  25% {
+     opacity: 0;
+    stroke-dashoffset: 0;
+  }
+  30% {
+    opacity: 0;
+    stroke-dashoffset: 188; /* 次の画像に向けてリセット */
+  }
+  100% {
+    opacity: 0;
+    stroke-dashoffset: 188;
+  }
 }
 
 /* 左のタイトル */
@@ -213,6 +438,7 @@ li {
   font-family: "Noto Serif JP", serif;
   writing-mode: vertical-rl;
   font-weight: normal;
+  color: #fff;
 }
 
 #top .next_text .bold {
@@ -249,7 +475,7 @@ li {
 #top .top_text {
   position: absolute;
   left: 63%;
-  top: 0;
+  top: 3%;
 }
 
 #top .top_text .title {
@@ -257,6 +483,7 @@ li {
   font-family: "Noto Serif JP", serif;
   writing-mode: vertical-rl;
   font-weight: normal;
+  color: #fff;
 }
 
 .text-animate {
@@ -305,7 +532,7 @@ li {
 }
 
 #top .btn {
-  border: 1px solid #121212;
+  border: 1px solid #fff;
   border-radius: 50%;
   width: 200px;
   height: 200px;
@@ -315,13 +542,14 @@ li {
   align-items: center;
   font-size: 1.3rem;
   position: absolute;
-  top: 50%;
+  top: 65%;
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
   font-family: "Noto Serif JP", serif;
   transition: 0.3s;
   z-index: 10;
+  color: #fff;
 }
 
 #top .btn span {
@@ -344,17 +572,18 @@ li {
 
 .circle-text {
   position: absolute;
-  top: 0;
+  top: 15%;
   left: 0;
   width: 300px;
   height: 300px;
   animation: rotateText 30s linear infinite;
+  
 }
 
 .circle-text text {
   font-size: 0.9rem;
   font-family: "Noto Serif JP", serif;
-  fill: #121212;
+  fill: #fff;
   letter-spacing: 2px;
 }
 
@@ -536,18 +765,25 @@ li {
     border-radius: 30px;
     padding: 30px 40px;
     margin-bottom: 30px;
+    display: flex;
+
+    align-items: center; 
 }
 
  #approach .app_item p {
     font-size: 1.2rem;
 }
 
-#approach .app_item img {
-    width: 150px;
+#approach .app_item .app_img img{
+    width: 120px;
+}
+
+#approach .app_item .app_text {
+    margin-left: 20px;
 }
 
 #approach .app_item .app_title {
-    padding: 20px 0;
+    padding: 10px 0;
     font-weight: bold;
     font-size: 1.7rem;
 }
@@ -638,11 +874,13 @@ li {
     justify-content: flex-start;
     overflow-x: auto;
     overflow-y: hidden;
+    scroll-padding: 100px;
     padding: 0 100px;
     gap: 40px;
     scroll-behavior: smooth; 
     scrollbar-width: none;      /* Firefox */
     -ms-overflow-style: none;   /* IE・Edge旧 */
+    scroll-snap-type: x mandatory; 
 }
 
 #portfoli .scllor .portfoli_item {
@@ -651,6 +889,9 @@ li {
     border: #121212 solid 1px;
     border-radius: 30px; 
     padding: 50px 30px 10px 30px;
+    scroll-snap-align: start; 
+
+    flex: 0 0 300px;
 }
 
 #portfoli .scllor .portfoli_item img {
@@ -1040,7 +1281,7 @@ li {
     text-align: center;
 }
 
-#footer .info a {
+#footer .info {
     display: flex;
     justify-content: center;
     margin-bottom: 20px;
@@ -1050,9 +1291,14 @@ li {
     width: 60px;
 }
 
-#footer h1 {
-    font-size: 1rem;
+#footer .footer_item h1 {
     text-align: left;
+    font-family: 'Noto Sans JP', 'M PLUS 1p', sans-serif;
+    font-weight: 900;       /* ここを900にする */
+    font-size: 1.3rem;      /* お好みで */
+    letter-spacing: 0.05em; /* 微調整 */
+    line-height: 1;
+    margin-left: 5px;
 }
 
 #footer .copy {
@@ -1084,6 +1330,11 @@ li {
         position: fixed;
     }
 
+    .logo h1 {  
+    top: 20px;
+    left: 85px;
+}
+
     .hamburger{
         right: 30px;
     }
@@ -1096,6 +1347,12 @@ li {
     padding-top: 108px;
     margin-bottom: 0;
     }
+
+    .circle {
+        display: grid;
+    }
+
+
 
     /* 左のタイトル */
     #top .next_text {
@@ -1163,6 +1420,7 @@ li {
         border-radius: 30px;
         padding: 30px 40px;
         margin-bottom: 30px;
+        flex-direction: column;
     }
 
     #approach .app_item p {
@@ -1334,17 +1592,117 @@ li {
         position: fixed;
     }
 
+
+    .logo h1 {  
+    top: 15px;
+    left: 75px;
+}
+
     .hamburger{
-        right: 30px;
+        right: 15px;
+    }
+
+    .hamburger span {
+        width: 15px;
+        height: 15px;
+    }
+
+    .hamburger span:nth-child(1){
+        border-radius: 50%;
+        left: 10px;
+    }
+
+    .hamburger span:nth-child(2){
+        left: 27px;
+    }
+
+    .hamburger span:nth-child(3){
+        left: 45px;
     }
 
     #nav {
         height: 43vh;
     }
 
+    #nav li {
+        padding: 10px 0;
+    }
+
+    #header .btn {
+        position: absolute;
+        top: 30px;
+        right: 100px;
+        width: 80px;
+        padding: 5px 0;
+        font-size: 0.75rem;
+    }
+
     #top {
     padding-top: 108px;
     margin-bottom: 0;
+    }
+
+    #top .back_img li {
+        height: 105vh;
+    }
+
+    #top .back_img li img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center; /* ← 画像の中心を常に表示 */
+}
+
+
+    .circle_item {
+        width: 40px;
+        height: 40px;
+    }
+
+    .circle-outline {
+    width: 50px;
+    height:50px;
+    }
+
+
+    .progress-ring {
+        transform: rotate(-90deg);
+    stroke-dasharray: 188;       /* 円周の長さ（2πr ≈ 2×3.14×95） */
+    stroke-dashoffset: 188;      /* 初期状態は線が見えない */
+    animation: rotateStroke 42s linear infinite;
+    }
+
+    @keyframes rotateStroke {
+    0% {
+        opacity: 0;
+        stroke-dashoffset: 188;
+    }
+
+    2% {
+        opacity: 1; /* 開始直後に表示 */
+    }
+
+    15% {
+        opacity: 1;
+        stroke-dashoffset: 0; /* ここで一周完了 */
+    }
+
+    16% {
+        opacity: 0;
+    }
+    
+    25% {
+        opacity: 0;
+        stroke-dashoffset: 0;
+    }
+    30% {
+        opacity: 0;
+        stroke-dashoffset: 188; /* 次の画像に向けてリセット */
+    }
+    100% {
+        opacity: 0;
+        stroke-dashoffset: 188;
+    }
     }
 
     /* 左のタイトル */
@@ -1372,12 +1730,18 @@ li {
     }
 
     #top .btn {
-        width: 170px;
-        height: 170px;
+        width: 140px;
+        height: 140px;
+        top: 100%;
+        font-size: 1rem;
+    }
+
+    #top .btn span {
+        font-size: 1.3rem;
     }
 
     #top .btn::after {
-        right: 3%;
+        right: 7%;
     }
 
     /* ---------- 円ボタン＋円周文字 ---------- */
@@ -1389,10 +1753,10 @@ li {
     }
 
     .circle-text {
-        width: 230px;
-        height: 230px;
-        top: -7%;
-        left: -7%;
+        width: 200px;
+        height: 200px;
+        top: 50%;
+        left: 0;
     }
 
     #philosophy .item .title {
@@ -1456,9 +1820,9 @@ li {
     }
 
     #portfoli .scllor .portfoli_item {
-        width: 350px;
-        height: 300px;
-        padding: 20px 30px 0px 30px;
+        width: 280px;
+        height: 320px;
+        padding: 20px 30px 10px 30px;
     }
 
     #portfoli .scllor .portfoli_item img {
