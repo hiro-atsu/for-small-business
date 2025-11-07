@@ -66,11 +66,16 @@ li {
     transition:  all 1.2s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
+.fade-target {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 1s ease;
+}
+
 .fadein.show{
     opacity: 1;
     transform: translateY(0);
 }
-
 
 
 #header {
@@ -211,7 +216,6 @@ li {
 }
 
 #top {
-    
   position: relative;
   height: 105vh;
   overflow: hidden;
@@ -257,66 +261,36 @@ li {
   width: 100%;
   height: 110vh;
   opacity: 0;
-  transform: translateX(-2%);
-  animation: fadeSlide 42s infinite;
+  z-index: 0;
 }
 
-#top .back_img li:nth-child(1) { animation-delay: 0s; }
-#top .back_img li:nth-child(2) { animation-delay: 6s; }
-#top .back_img li:nth-child(3) { animation-delay: 12s; }
-#top .back_img li:nth-child(4) { animation-delay: 18s; }
-#top .back_img li:nth-child(5) { animation-delay: 24s; }
-#top .back_img li:nth-child(6) { animation-delay: 30s; }
-#top .back_img li:nth-child(7) { animation-delay: 36s; }
-
-#top .back_img li img {
-  width: 105%;
-  height: 110vh;
-  object-fit: cover;
-  transform: translateX(-2%);
+#top .back_img li.active {
+  opacity: 1;
+  transform: translateY(0);
+  z-index: 5;
 }
 
-/* なめらかで均等なフェード切り替え */
-@keyframes fadeSlide {
-  0% {
-    opacity: 0;
-  }
-  5% {
-    opacity: 1;
-  }
-  20% {
-    opacity: 1;
-  }
-  25% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 0;
-  }
+/* 最初の白背景（フェード開始前用） */
+#top .back_img li:nth-child(1) {
+  background-color: #fff;
 }
 
-@keyframes fadeSlide {
-  0% {
-    opacity: 0;
-    transform: translateX(-2%) scale(1.05);
-  }
-  5% {
-    opacity: 1;
-    transform: translateX(0%) scale(1);
-  }
-  20% {
-    opacity: 1;
-    transform: translateX(1%) scale(1);
-  }
-  25% {
-    opacity: 0;
-    transform: translateX(2%) scale(1.03);
-  }
-  100% {
-    opacity: 0;
-    transform: translateX(-2%) scale(1.05);
-  }
+#top .back_img li:nth-child(1) img {
+  display: none;
 }
+
+#top .back_img li.active img {
+  animation: panZoom 12s ease-in-out infinite alternate;
+}
+
+/* ゆっくりパン＆ズーム（active のときだけ実行） */
+@keyframes panZoom {
+  0% { transform: scale(1.03) translateX(0%); }
+  50% { transform: scale(1.05) translateX(1%); }
+  100% { transform: scale(1.03) translateX(0%); }
+}
+
+
 
 /*上の丸*/
 
@@ -326,7 +300,8 @@ button {
 
 .circle {
     position: absolute;
-    left: 10px;
+    left: 0;
+    right: 0;
     gap: 20px;
     display: flex;
     flex-wrap: wrap;
@@ -341,6 +316,16 @@ button {
     z-index: 10;
     border-radius: 50%;
 }
+
+.circle_item {
+  opacity: 0.5; /* 非アクティブ時は少し暗く */
+  transition: opacity 0.3s ease;
+}
+
+.circle_item.active {
+  opacity: 1; /* 表示中（アクティブ）は明るく */
+}
+
 
 .circle-inner {
   width: 100%;
@@ -426,64 +411,46 @@ button {
   }
 }
 
-/* 左のタイトル */
-#top .next_text {
-  position: absolute;
-  left: 33%;
-  top: 22%;
+.progress-ring.active {
+  animation: ringProgress 6s linear forwards;
 }
 
-#top .next_text .title {
+@keyframes ringProgress {
+  from {
+    stroke-dashoffset: 188;
+    opacity: 1;
+  }
+  to {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+}
+
+/* 左のタイトル */
+#top .title {
   font-size: 2.3rem;
   font-family: "Noto Serif JP", serif;
   writing-mode: vertical-rl;
   font-weight: normal;
-  color: #fff;
+  color: #121212;
+  z-index: 20;
+}
+#top  .left{
+  position: absolute;
+  left: 33%;
+  top: 50%;
 }
 
-#top .next_text .bold {
+#top .left .bold {
   font-weight: 700;
 }
 
-/* 石画像 */
-#top .img {
-  position: absolute;
-  top:  45%;
-  left: 50%;
-  width: 15%;
-  transform: translate(-50%, -50%);
-}
-
-#top .img img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-#top .img .shadow {
-  position: absolute;
-  bottom: -15px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 80%;
-  height: 20px;
-  background: radial-gradient(ellipse at center, rgba(0,0,0,0.3), transparent 70%);
-  border-radius: 50%;
-}
 
 /* 右の縦書きテキスト */
-#top .top_text {
+#top .right {
   position: absolute;
   left: 63%;
-  top: 3%;
-}
-
-#top .top_text .title {
-  font-size: 2rem;
-  font-family: "Noto Serif JP", serif;
-  writing-mode: vertical-rl;
-  font-weight: normal;
-  color: #fff;
+  top: 25%;
 }
 
 .text-animate {
@@ -520,77 +487,137 @@ button {
 .text-animate span:nth-child(14) { animation-delay: 1.4s; }
 .text-animate span:nth-child(15) { animation-delay: 1.5s; }
 .text-animate span:nth-child(16) { animation-delay: 1.6s; }
-
-
-/* ---------- 円ボタン＋円周文字 ---------- */
-.circle-wrap {
+/* ====== テキストとボタンのアニメーション ====== */
+#top .back_img li p.name,
+#top .back_img li a.btn {
   position: absolute;
-  bottom: 5%;
-  right: 28%;
-  width: 300px;
-  height: 300px;
-}
-
-#top .btn {
-  border: 1px solid #fff;
-  border-radius: 50%;
-  width: 200px;
-  height: 200px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  font-size: 1.3rem;
-  position: absolute;
-  top: 65%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  font-family: "Noto Serif JP", serif;
-  transition: 0.3s;
-  z-index: 10;
-  color: #fff;
-}
-
-#top .btn span {
-  font-size: 1.8rem;
-  font-weight: bold;
-  line-height: 1.1;
-}
-
-#top .btn::after {
-  content: "▶";
-  position: absolute;
-  right: 10%;
-  top: 50%;
-}
-
-#top .btn:hover {
-    transform: translate(-50%, -50%) scale(1.05);
-    opacity: 0.7;
-}
-
-.circle-text {
-  position: absolute;
-  top: 15%;
   left: 0;
-  width: 300px;
-  height: 300px;
-  animation: rotateText 30s linear infinite;
-  
+  right: 0;
+  margin: 0 auto;
+  z-index: 10;
+  opacity: 0;
+  transform: translateY(40px);
 }
 
-.circle-text text {
-  font-size: 0.9rem;
-  font-family: "Noto Serif JP", serif;
-  fill: #fff;
-  letter-spacing: 2px;
+/* 配置調整 */
+#top .back_img li p.name {
+  bottom: 23%;
+  color: #121212;
+  font-size: 1.5rem;
+  font-family: 'Noto Sans JP', 'M PLUS 1p', sans-serif;
+    font-weight: 900;
+  text-align: center;
+  letter-spacing: 0.1em;
+  animation: textFade 42s infinite;
 }
 
-@keyframes rotateText {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+#top .back_img li p.fade-target {
+  transition-delay: 0.2s;
 }
+
+/* aタグは少し遅れて出す */
+#top .back_img li a.fade-target {
+  display: inline-block;
+  transition-delay: 0.4s;
+}
+
+#top .back_img li a.btn {
+  bottom: 15%;
+  display: block;
+  width: 150px;
+  padding: 15px 0;
+  border: none;
+  background-color: #4759ff;
+  border-radius: 30px;
+  color: #fff;
+  text-align: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  font-family: 'Noto Sans JP', 'M PLUS 1p', sans-serif;
+  transition: 1s;
+  animation: linkFade 42s infinite;
+}
+
+#top .back_img li p.name.show,
+#top .back_img li a.btn.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* p と a の遅延（CSS側で軽く指定しておく） */
+#top .back_img li p.name { transition-delay: 0.12s; }
+#top .back_img li a.btn  { transition-delay: 0.35s; }
+
+/* 各スライドに合わせて遅延タイミングを設定 
+#top .back_img li:nth-child(1) p.name{ animation-delay: 0s; }
+
+#top .back_img li:nth-child(2) p.name{ animation-delay: 6s; }
+
+#top .back_img li:nth-child(3) p.name{ animation-delay: 12s; }
+
+#top .back_img li:nth-child(4) p.name{ animation-delay: 18s; }
+
+#top .back_img li:nth-child(5) p.name{ animation-delay: 24s; }
+
+#top .back_img li:nth-child(6) p.name { animation-delay: 30s; }
+
+#top .back_img li:nth-child(7) p.name { animation-delay: 36s; }
+
+/* ふわっと下から出て、一緒に消えるアニメーション 
+@keyframes textFade {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  5% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  20% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  25% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+}
+
+
+#top .back_img li:nth-child(1) a.btn {animation-delay: 0.8s;}
+#top .back_img li:nth-child(2) a.btn {animation-delay: 6.8s;}
+#top .back_img li:nth-child(3) a.btn {animation-delay: 12.8s;}
+#top .back_img li:nth-child(4) a.btn {animation-delay: 18.8s;}
+#top .back_img li:nth-child(5) a.btn {animation-delay: 24.8s;}
+#top .back_img li:nth-child(6) a.btn {animation-delay: 30.8s;}
+#top .back_img li:nth-child(7) a.btn {animation-delay: 36.8s;}
+
+@keyframes linkFade {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  5% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  15% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  20% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+}*/
 
 #philosophy {
     padding-top: 200px;
@@ -1401,7 +1428,6 @@ button {
 
     #approach .item {
         margin-bottom: 180px;
-        align-items: left;
     }
 
     #approach .item .title {
