@@ -217,7 +217,7 @@ li {
 
 #top {
   position: relative;
-  height: 105vh;
+  height: 100vh;
   overflow: hidden;
   padding-top: 123px;
   margin-bottom: 100px;
@@ -259,7 +259,7 @@ li {
   top: 0;
   left: 0;
   width: 100%;
-  height: 110vh;
+  height: 100vh;
   opacity: 0;
   z-index: 0;
 }
@@ -275,9 +275,17 @@ li {
   background-color: #fff;
 }
 
+#top .back_img li img {
+    height: 100vh;
+    width: 100%;
+    object-fit: cover;
+}
+
 #top .back_img li:nth-child(1) img {
   display: none;
 }
+
+
 
 #top .back_img li.active img {
   animation: panZoom 12s ease-in-out infinite alternate;
@@ -632,7 +640,7 @@ button {
     display: block;
     margin: 0 auto;
     position: absolute;
-    top: 0;
+    top: 5%;
     left: 0;
     right: 0;
 }
@@ -1375,40 +1383,33 @@ button {
     margin-bottom: 0;
     }
 
-    .circle {
-        display: grid;
+    #top .title{
+        font-size: 1.6rem;
     }
 
+    #top  .left{
+        top: 40%;
+        }
 
-
-    /* 左のタイトル */
-    #top .next_text {
-    left: 27%;
+    #top .right {
+        top: 30%;
     }
-
-    #top .next_text .title{
-        font-size: 2rem;
-    }
-
-    /* 石画像 */
-    #top .img {
-    width: 23%;
-    top: 38%;
-    }
-
-    /* 右の縦書きテキスト */
-    #top .top_text {
-    left: 66%;
-    }
-
-    #top .top_text .title {
-        font-size: 1.7rem;
-    }
-
     /* ---------- 円ボタン＋円周文字 ---------- */
+    .circle {
+        gap: 15px;
+    }
     .circle-wrap {
     bottom: 8%;
     right: 20%;
+    }
+
+    #top .back_img li p.name {
+    font-size: 1.3rem;
+    bottom: 15%;
+    }
+
+    #top .back_img li a.btn  {
+        bottom: 7%;
     }
 
     #philosophy .item {
@@ -1664,22 +1665,6 @@ button {
         font-size: 0.75rem;
     }
 
-    #top {
-    padding-top: 108px;
-    margin-bottom: 0;
-    }
-
-    #top .back_img li {
-        height: 105vh;
-    }
-
-    #top .back_img li img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center center; /* ← 画像の中心を常に表示 */
-}
-
 
     .circle_item {
         width: 40px;
@@ -1732,43 +1717,16 @@ button {
     }
     }
 
-    /* 左のタイトル */
-    #top .next_text {
-    left: 23%;
-    }
-
-    #top .next_text .title{
-        font-size: 1.8rem;
-    }
-
-    /* 石画像 */
-    #top .img {
-    width: 25%;
-    top: 35%;
-    }
-
-    /* 右の縦書きテキスト */
-    #top .top_text {
-    left: 66%;
-    }
-
-    #top .to_text .title{
-        font-size: 1.5rem;
-    }
-
-    #top .btn {
-        width: 140px;
-        height: 140px;
-        top: 100%;
-        font-size: 1rem;
+    #top .title{
+        font-size: 1.4rem;
     }
 
     #top .btn span {
         font-size: 1.3rem;
     }
 
-    #top .btn::after {
-        right: 7%;
+    #top .back_img li p.name{
+        font-size: 1rem;
     }
 
     /* ---------- 円ボタン＋円周文字 ---------- */
