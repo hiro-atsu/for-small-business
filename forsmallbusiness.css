@@ -458,7 +458,7 @@ button {
 #top .right {
   position: absolute;
   left: 63%;
-  top: 25%;
+  top: 30%;
 }
 
 .text-animate {
@@ -509,7 +509,7 @@ button {
 
 /* 配置調整 */
 #top .back_img li p.name {
-  bottom: 23%;
+  bottom: 15%;
   color: #121212;
   font-size: 1.5rem;
   font-family: 'Noto Sans JP', 'M PLUS 1p', sans-serif;
@@ -530,7 +530,7 @@ button {
 }
 
 #top .back_img li a.btn {
-  bottom: 15%;
+  bottom: 7%;
   display: block;
   width: 150px;
   padding: 15px 0;
