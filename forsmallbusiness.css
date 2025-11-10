@@ -217,7 +217,7 @@ li {
 
 #top {
   position: relative;
-  height: 100vh;
+  min-height: 100vh;
   overflow: hidden;
   padding-top: 123px;
   margin-bottom: 100px;
@@ -229,7 +229,7 @@ li {
   top: 0;
   left: 0;
   width: 100%;
-  height: 110vh;
+  height: 100vh;
   background: rgba(0, 0, 0, 0.2); /* ← ここで暗さを調整（0.3〜0.5くらいがおすすめ） */
   z-index: 2;
   pointer-events: none;
@@ -262,13 +262,12 @@ li {
   height: 100vh;
   opacity: 0;
   z-index: 0;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: #fff; 
 }
 
-#top .back_img li.active {
-  opacity: 1;
-  transform: translateY(0);
-  z-index: 5;
-}
 
 /* 最初の白背景（フェード開始前用） */
 #top .back_img li:nth-child(1) {
@@ -276,26 +275,22 @@ li {
 }
 
 #top .back_img li img {
-    height: 100vh;
-    width: 100%;
-    object-fit: cover;
+    width: 15%;
+    position: absolute;
+    top: 48%;
+    left: 42%;
 }
 
-#top .back_img li:nth-child(1) img {
-  display: none;
-}
-
-
-
-#top .back_img li.active img {
+#top .back_img li.active {
+  opacity: 1;
+  z-index: 5;
   animation: panZoom 12s ease-in-out infinite alternate;
 }
 
-/* ゆっくりパン＆ズーム（active のときだけ実行） */
 @keyframes panZoom {
-  0% { transform: scale(1.03) translateX(0%); }
-  50% { transform: scale(1.05) translateX(1%); }
-  100% { transform: scale(1.03) translateX(0%); }
+  0% { background-size: 102%; background-position: center; }
+  50% { background-size: 105%; background-position: 52% center; }
+  100% { background-size: 102%; background-position: center; }
 }
 
 
@@ -432,6 +427,14 @@ button {
     stroke-dashoffset: 0;
     opacity: 1;
   }
+}
+
+#top .company {
+    font-size: 1.8rem;
+    color: #121212;
+    position: absolute;
+    top: 20%;
+    left: 10%;
 }
 
 /* 左のタイトル */
@@ -710,6 +713,125 @@ button {
     margin-bottom: 50px;
 }
 
+#philosophy .menber {
+    margin: 100px 0;
+    width: 100%;
+    color: #fff;
+    --arrow-color: #000;
+    --arrow-background-color: #fff;
+}
+
+#philosophy .menber .title-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 50px 34px 50px;
+}
+
+#philosophy .title-container .title {
+    font-weight: 600;
+    font-size: 1.5rem;
+    letter-spacing: .8px;
+    color: #000;
+}
+
+#philosophy .title-container .buttom {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+#philosophy .title-container .buttom button{
+    width: 36px;
+    height: 36px;
+    color: var(--arrow-color);
+    background-color: var(--arrow-background-color);
+    border-radius: 50%;
+  transition: opacity 0.3s ease;
+}
+
+
+
+
+#philosophy .title-container .buttom svg {
+    width: 22;
+    height: 22;
+    fill: none;
+}
+
+#philosophy .menber .sec_item {
+    display: flex;
+    gap: 30px;
+    width: 100%;
+    scroll-padding: 50px;
+    padding: 0 50px 60px 50px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none; /* Firefox用 */
+}
+
+#philosophy .sec_item::-webkit-scrollbar {
+  display: none; /* Chrome / Safari用 */
+}
+
+
+#philosophy .menber .people {
+    width: 300px;
+    flex-shrink: 0;
+}
+
+#philosophy .people img {
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: 8px;
+    width: 100%;
+    display: block;
+    margin-bottom: 16px;
+}
+
+#philosophy .people .text {
+    padding: 0 ;
+    margin-bottom: 0;
+    position: relative;
+    font-size: 1.2rem;
+    line-height: 1.9;
+    flex-direction: column;
+    gap: 10px;
+    display: flex;
+}
+
+#philosophy .people .text .name {
+    color: #a3a8b1;
+    letter-spacing: .2px;
+    font-size: 0.625rem;
+    font-weight: 300;
+    line-height: 1.2;
+    display: block;
+}
+
+#philosophy .people .text .profile {
+    letter-spacing: .24px;
+    word-break: auto-phrase;
+    font-size: 0.7rem;
+    font-weight: 600;
+    line-height: 180%;
+}
+
+#philosophy .menber .btn {
+    text-align: center;
+    letter-spacing: 0.56px;
+    flex-shrink: 0;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    font-weight: 500;
+    line-height: 1;
+    display: flex;
+    gap: 8px;
+}
+
 #approach {
     margin-bottom: 200px;
     padding-top: 200px;
@@ -903,6 +1025,30 @@ button {
     left: 0;
 }
 
+#portfoli  .scroll-btn {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 30px;
+    padding-right: 50px;
+}
+
+#portfoli  .scroll-btn button{
+    width: 36px;
+    height: 36px;
+    color: var(--arrow-color);
+    background-color: var(--arrow-background-color);
+    border-radius: 50%;
+  transition: opacity 0.3s ease;
+}
+
+#philosophy  .scroll-btn svg {
+    width: 22;
+    height: 22;
+    fill: none;
+}
+
 #portfoli .scllor {
     width: 100%;
     display: flex;
@@ -913,8 +1059,6 @@ button {
     padding: 0 100px;
     gap: 40px;
     scroll-behavior: smooth; 
-    scrollbar-width: none;      /* Firefox */
-    -ms-overflow-style: none;   /* IE・Edge旧 */
     scroll-snap-type: x mandatory; 
 }
 
@@ -999,6 +1143,7 @@ button {
     justify-content: center;
     flex-direction: column-reverse;
     writing-mode: vertical-lr;
+    white-space: nowrap;
     font-size: 2rem;
     letter-spacing: 0.4em;
 }
@@ -1378,6 +1523,10 @@ button {
         height: 43vh;
     }
 
+    #nav li {
+        padding: 10px 0;
+    }
+
     #top {
     padding-top: 108px;
     margin-bottom: 0;
@@ -1391,6 +1540,17 @@ button {
         top: 40%;
         }
 
+    #top .right {
+        top: 30%;
+    }
+
+    #top .company {
+    font-size: 1.8rem;
+    color: #121212;
+    position: absolute;
+    top: 30%;
+    left: 5%;
+}
     /* ---------- 円ボタン＋円周文字 ---------- */
     .circle {
         gap: 15px;
@@ -1619,9 +1779,9 @@ button {
 
 
     .logo h1 {  
-    top: 15px;
-    left: 75px;
-}
+        top: 15px;
+        left: 75px;
+    }
 
     .hamburger{
         right: 15px;
@@ -1643,14 +1803,6 @@ button {
 
     .hamburger span:nth-child(3){
         left: 45px;
-    }
-
-    #nav {
-        height: 43vh;
-    }
-
-    #nav li {
-        padding: 10px 0;
     }
 
     #header .btn {
