@@ -80,7 +80,7 @@ li {
 
 #header {
     width: 100%;
-    padding: 30px 0 5px 40px;
+    padding: 10px 0 5px 40px;
     background-color: #fff;
     z-index: 30;
     position: fixed;
@@ -103,7 +103,7 @@ li {
     letter-spacing: 0.05em; /* 微調整 */
     line-height: 1;
     position: absolute;
-    top: 30px;
+    top: 25px;
     left: 105px;
 }
 
@@ -192,6 +192,13 @@ li {
     color: #8d8d8d;
 }
 
+#header .company {
+    font-size: 0.8rem;
+    font-weight: 100;
+    padding-left: 20px;
+    color: #000;
+}
+
 #header .btn {
     position: absolute;
     top: 30px;
@@ -217,10 +224,9 @@ li {
 
 #top {
   position: relative;
-  min-height: 100vh;
+  min-height: 140vh;
   overflow: hidden;
   padding-top: 123px;
-  margin-bottom: 100px;
 }
 
 #top::before {
@@ -231,7 +237,7 @@ li {
   width: 100%;
   height: 100vh;
   background: rgba(0, 0, 0, 0.2); /* ← ここで暗さを調整（0.3〜0.5くらいがおすすめ） */
-  z-index: 2;
+  z-index: 0;
   pointer-events: none;
 }
 
@@ -259,9 +265,9 @@ li {
   top: 0;
   left: 0;
   width: 100%;
-  height: 100vh;
+  height: 140vh;
   opacity: 0;
-  z-index: 0;
+  z-index: 1;
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -283,7 +289,7 @@ li {
 
 #top .back_img li.active {
   opacity: 1;
-  z-index: 5;
+  z-index: 2;
   animation: panZoom 12s ease-in-out infinite alternate;
 }
 
@@ -298,42 +304,42 @@ li {
 /*上の丸*/
 
 button {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .circle {
-    position: absolute;
-    left: 0;
-    right: 0;
-    gap: 20px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-top: 30px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  gap: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 30px;
 }
 
 .circle_item {
-    position: relative;
-    width: 60px;
-    height: 60px;
-    z-index: 10;
-    border-radius: 50%;
-}
-
-.circle_item {
-  opacity: 0.5; /* 非アクティブ時は少し暗く */
+  position: relative;
+  width: 60px;
+  height: 60px;
+  z-index: 10;
+  border-radius: 50%;
+  opacity: 0.5;
   transition: opacity 0.3s ease;
 }
 
 .circle_item.active {
-  opacity: 1; /* 表示中（アクティブ）は明るく */
+  opacity: 1;
 }
 
+.circle_item:nth-child(n+2) {
+  border-radius: 0;
+}
 
 .circle-inner {
   width: 100%;
   height: 100%;
-  border-radius: 50%;
+  border-radius: inherit;
   overflow: hidden;
 }
 
@@ -341,7 +347,6 @@ button {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  display: block;
 }
 
 .circle-outline {
@@ -354,88 +359,85 @@ button {
   transform: translate(-50%, -50%);
 }
 
-.progress-ring-buttom{
-    fill: none;
-    stroke: #0d0d0d4d;
-    stroke-width: 2px;
+.progress-ring-buttom {
+  fill: none;
+  stroke: #0d0d0d4d;
+  stroke-width: 2px;
 }
 
 .progress-ring {
-  fill: none;                  /* 中を塗らない */
-  stroke: #007bff;             /* 青い線 */
-  stroke-width: 3;             /* 線の太さ */
-  stroke-linecap: round;       /* 丸い線端 */
-  transform: rotate(-90deg);   /* 開始位置を上に */
+  fill: none;
+  stroke: #007bff;
+  stroke-width: 3;
+  stroke-linecap: round;
+  transform: rotate(-90deg);
   transform-origin: center;
-  stroke-dasharray: 188;       /* 円周の長さ（2πr ≈ 2×3.14×95） */
-  stroke-dashoffset: 188;      /* 初期状態は線が見えない */
-  animation: rotateStroke 42s linear infinite;
+  stroke-dasharray: 188;
+  stroke-dashoffset: 188;
+  transition: stroke-dashoffset 0.1s linear;
 }
 
-.circle_item:nth-child(1) .progress-ring { animation-delay: 0s; }
-.circle_item:nth-child(2) .progress-ring { animation-delay: 6s; }
-.circle_item:nth-child(3) .progress-ring { animation-delay: 12s; }
-.circle_item:nth-child(4) .progress-ring { animation-delay: 18s; }
-.circle_item:nth-child(5) .progress-ring { animation-delay: 24s; }
-.circle_item:nth-child(6) .progress-ring { animation-delay: 30s; }
-.circle_item:nth-child(7) .progress-ring { animation-delay: 36s; }
+/* --- 四角用 --- */
 
-/* 線が1周して戻るアニメーション */
-@keyframes rotateStroke {
+
+.circle_item {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  z-index: 10;
+  border-radius: 50%;
+  opacity: 0.5;
+  transition: opacity 0.3s ease;
+}
+
+.circle_item:nth-child(n+2) {
+  border-radius: 0;
+}
+
+.square-outline,
+.circle-outline {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 70px; /* 少し外側を回るように大きめ */
+  height: 70px;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+/* 四角の下地線 */
+.progress-rect-buttom {
+  fill: none;
+  stroke: #0d0d0d4d;
+  stroke-width: 2;
+}
+
+/* 四角の青線 */
+.progress-rect {
+  fill: none;
+  stroke: #007bff;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-dasharray: 220;
+  stroke-dashoffset: 220;
+  transition: stroke-dashoffset 0.3s linear;
+}
+
+/* アニメーション */
+.circle_item.active .progress-rect {
+  animation: squareStroke 6s linear forwards;
+}
+
+@keyframes squareStroke {
   0% {
-    opacity: 0;
-    stroke-dashoffset: 188;
-  }
-
-   2% {
-    opacity: 1; /* 開始直後に表示 */
-  }
-
-  15% {
-    opacity: 1;
-    stroke-dashoffset: 0; /* ここで一周完了 */
-  }
-
-  16% {
-    opacity: 0;
-  }
-  
-  25% {
-     opacity: 0;
-    stroke-dashoffset: 0;
-  }
-  30% {
-    opacity: 0;
-    stroke-dashoffset: 188; /* 次の画像に向けてリセット */
+    stroke-dashoffset: 220;
   }
   100% {
-    opacity: 0;
-    stroke-dashoffset: 188;
-  }
-}
-
-.progress-ring.active {
-  animation: ringProgress 6s linear forwards;
-}
-
-@keyframes ringProgress {
-  from {
-    stroke-dashoffset: 188;
-    opacity: 1;
-  }
-  to {
     stroke-dashoffset: 0;
-    opacity: 1;
   }
 }
 
-#top .company {
-    font-size: 1.8rem;
-    color: #121212;
-    position: absolute;
-    top: 20%;
-    left: 10%;
-}
+
 
 /* 左のタイトル */
 #top .title {
@@ -444,12 +446,12 @@ button {
   writing-mode: vertical-rl;
   font-weight: normal;
   color: #121212;
-  z-index: 20;
+  z-index: 30;
 }
 #top  .left{
   position: absolute;
   left: 33%;
-  top: 50%;
+  top: 40%;
 }
 
 #top .left .bold {
@@ -461,7 +463,7 @@ button {
 #top .right {
   position: absolute;
   left: 63%;
-  top: 30%;
+  top: 25%;
 }
 
 .text-animate {
@@ -512,7 +514,7 @@ button {
 
 /* 配置調整 */
 #top .back_img li p.name {
-  bottom: 15%;
+  bottom: 20%;
   color: #121212;
   font-size: 1.5rem;
   font-family: 'Noto Sans JP', 'M PLUS 1p', sans-serif;
@@ -532,22 +534,79 @@ button {
   transition-delay: 0.4s;
 }
 
-#top .back_img li a.btn {
-  bottom: 7%;
-  display: block;
+#top .btn {
+  position: relative;
+  bottom: 4%;
+  display: inline-block;
   width: 150px;
-  padding: 15px 0;
-  border: none;
-  background-color: #4759ff;
-  border-radius: 30px;
-  color: #fff;
+  padding: 51px 0;
+  border: 1px solid #000;
+  border-radius: 50%;
+  color: #000;
   text-align: center;
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   font-weight: 700;
-  font-family: 'Noto Sans JP', 'M PLUS 1p', sans-serif;
-  transition: 1s;
-  animation: linkFade 42s infinite;
+  overflow: visible;
+  z-index: 2;  
+  transition: 0.5s;
+  transform-origin: center center;
 }
+
+#top .btn::before {
+    content: "";
+    position: absolute;
+    bottom: 39%;
+    right: 6%;
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+    border-left: 13px solid #000;
+}
+
+#top .btn span {
+    display: block;
+    font-size: 1.5rem;
+}
+
+#top .back_img li a.btn.show:hover {
+  transform: scale(1.05);
+  opacity: 0.8;
+}
+
+.circle-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 220px;
+  height: 220px;
+  transform: translate(-50%, -50%);
+  animation: rotateText 10s linear infinite;
+  z-index: 1;
+}
+
+.circle-text svg {
+  width: 100%;
+  height: 100%;
+}
+
+.circle-text text {
+  fill: #000;
+  font-size: 9px;
+  font-family: "Noto Sans JP", sans-serif;
+  letter-spacing: 0.1em;
+}
+
+@keyframes rotateText {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
 
 #top .back_img li p.name.show,
 #top .back_img li a.btn.show {
@@ -713,124 +772,6 @@ button {
     margin-bottom: 50px;
 }
 
-#philosophy .menber {
-    margin: 100px 0;
-    width: 100%;
-    color: #fff;
-    --arrow-color: #000;
-    --arrow-background-color: #fff;
-}
-
-#philosophy .menber .title-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 50px 34px 50px;
-}
-
-#philosophy .title-container .title {
-    font-weight: 600;
-    font-size: 1.5rem;
-    letter-spacing: .8px;
-    color: #000;
-}
-
-#philosophy .title-container .buttom {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-}
-
-#philosophy .title-container .buttom button{
-    width: 36px;
-    height: 36px;
-    color: var(--arrow-color);
-    background-color: var(--arrow-background-color);
-    border-radius: 50%;
-  transition: opacity 0.3s ease;
-}
-
-
-
-
-#philosophy .title-container .buttom svg {
-    width: 22;
-    height: 22;
-    fill: none;
-}
-
-#philosophy .menber .sec_item {
-    display: flex;
-    gap: 30px;
-    width: 100%;
-    scroll-padding: 50px;
-    padding: 0 50px 60px 50px;
-    overflow-x: auto;
-    overflow-y: hidden;
-    scroll-behavior: smooth;
-    scroll-snap-type: x mandatory;
-    scrollbar-width: none; /* Firefox用 */
-}
-
-#philosophy .sec_item::-webkit-scrollbar {
-  display: none; /* Chrome / Safari用 */
-}
-
-
-#philosophy .menber .people {
-    width: 300px;
-    flex-shrink: 0;
-}
-
-#philosophy .people img {
-    aspect-ratio: 1;
-    object-fit: cover;
-    border-radius: 8px;
-    width: 100%;
-    display: block;
-    margin-bottom: 16px;
-}
-
-#philosophy .people .text {
-    padding: 0 ;
-    margin-bottom: 0;
-    position: relative;
-    font-size: 1.2rem;
-    line-height: 1.9;
-    flex-direction: column;
-    gap: 10px;
-    display: flex;
-}
-
-#philosophy .people .text .name {
-    color: #a3a8b1;
-    letter-spacing: .2px;
-    font-size: 0.625rem;
-    font-weight: 300;
-    line-height: 1.2;
-    display: block;
-}
-
-#philosophy .people .text .profile {
-    letter-spacing: .24px;
-    word-break: auto-phrase;
-    font-size: 0.7rem;
-    font-weight: 600;
-    line-height: 180%;
-}
-
-#philosophy .menber .btn {
-    text-align: center;
-    letter-spacing: 0.56px;
-    flex-shrink: 0;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.2rem;
-    font-weight: 500;
-    line-height: 1;
-    display: flex;
-    gap: 8px;
-}
 
 #approach {
     margin-bottom: 200px;
@@ -1397,6 +1338,130 @@ button {
     margin-bottom: 30px;
 }
 
+.menber {
+    padding-top: 100px;
+    position: relative;
+    margin: 100px 0;
+    width: 100%;
+    color: #fff;
+    --arrow-color: #000;
+    --arrow-background-color: #fff;
+}
+
+.menber::before {
+    content: "";
+    width: 90%;
+    height: 1px;
+    background-color: #8d8d8d;
+    display: block;
+    margin: 0 auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+.menber .sec_title {
+    display: flex;
+    flex-direction: row-reverse;
+    margin-right: 5%;
+}
+
+.menber .title-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 50px 34px 50px;
+}
+
+.title-container .title {
+    font-weight: 600;
+    font-size: 1.5rem;
+    letter-spacing: .8px;
+    color: #000;
+}
+
+ .title-container .buttom {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+ .title-container .buttom button{
+    width: 36px;
+    height: 36px;
+    color: var(--arrow-color);
+    background-color: var(--arrow-background-color);
+    border-radius: 50%;
+  transition: opacity 0.3s ease;
+}
+
+.title-container .buttom svg {
+    width: 22;
+    height: 22;
+    fill: none;
+}
+
+.menber .sec_item {
+    display: flex;
+    gap: 30px;
+    width: 100%;
+    scroll-padding: 50px;
+    padding: 0 50px 60px 50px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none; /* Firefox用 */
+}
+
+ .sec_item::-webkit-scrollbar {
+  display: none; /* Chrome / Safari用 */
+}
+
+
+ .menber .people {
+    width: 300px;
+    flex-shrink: 0;
+}
+
+ .people img {
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: 8px;
+    width: 100%;
+    display: block;
+    margin-bottom: 16px;
+}
+
+ .people .text {
+    padding: 0 ;
+    margin-bottom: 0;
+    position: relative;
+    font-size: 1.2rem;
+    line-height: 1.9;
+    flex-direction: column;
+    gap: 10px;
+    display: flex;
+}
+
+ .people .text .name {
+    color: #a3a8b1;
+    letter-spacing: .2px;
+    font-size: 0.625rem;
+    font-weight: 300;
+    line-height: 1.2;
+    display: block;
+}
+
+ .people .text .profile {
+    letter-spacing: .24px;
+    word-break: auto-phrase;
+    font-size: 0.7rem;
+    font-weight: 600;
+    line-height: 180%;
+}
+
 .mail {
     padding: 100px 30px 0 30px;
     margin-bottom: 100px;
@@ -1414,6 +1479,10 @@ button {
     top: 0;
     left: 0;
     right: 0;
+}
+
+.mail .sec_title {
+    margin-left: 5%;
 }
 
 .mail .item {
@@ -1456,7 +1525,6 @@ button {
 }
 
 #footer {
-    padding-bottom: 70px;
     text-align: center;
 }
 
@@ -1481,8 +1549,9 @@ button {
 }
 
 #footer .copy {
+    background-color: #000;
     letter-spacing: 0.3em;
-    color: #8d8d8d;
+    color: #ffffff;
 }
 
 
@@ -1505,12 +1574,11 @@ button {
     }
 
     #header {
-        padding: 20px 0 0 20px;
-        position: fixed;
+        padding: 10px 0 0 20px;
     }
 
     .logo h1 {  
-    top: 20px;
+    top: 25px;
     left: 85px;
 }
 
@@ -1543,13 +1611,6 @@ button {
         top: 30%;
     }
 
-    #top .company {
-    font-size: 1.8rem;
-    color: #121212;
-    position: absolute;
-    top: 30%;
-    left: 5%;
-}
     /* ---------- 円ボタン＋円周文字 ---------- */
     .circle {
         gap: 15px;
@@ -1561,11 +1622,11 @@ button {
 
     #top .back_img li p.name {
     font-size: 1.3rem;
-    bottom: 15%;
+    bottom: 30%;
     }
 
     #top .back_img li a.btn  {
-        bottom: 7%;
+        bottom: 10%;
     }
 
     #philosophy .item {
@@ -1773,13 +1834,11 @@ button {
     }
 
     #header {
-        padding: 15px 0 0 10px;
-        position: fixed;
+        padding: 10px 0 0 10px;
     }
 
-
     .logo h1 {  
-        top: 15px;
+        top: 25px;
         left: 75px;
     }
 
@@ -1815,68 +1874,29 @@ button {
     }
 
 
-    .circle_item {
-        width: 40px;
-        height: 40px;
+    #top {
+    min-height: 100vh;
     }
 
-    .circle-outline {
-    width: 50px;
-    height:50px;
+    #top .back_img li {
+    height: 100vh;
     }
 
-
-    .progress-ring {
-        transform: rotate(-90deg);
-    stroke-dasharray: 188;       /* 円周の長さ（2πr ≈ 2×3.14×95） */
-    stroke-dashoffset: 188;      /* 初期状態は線が見えない */
-    animation: rotateStroke 42s linear infinite;
-    }
-
-    @keyframes rotateStroke {
-    0% {
-        opacity: 0;
-        stroke-dashoffset: 188;
-    }
-
-    2% {
-        opacity: 1; /* 開始直後に表示 */
-    }
-
-    15% {
-        opacity: 1;
-        stroke-dashoffset: 0; /* ここで一周完了 */
-    }
-
-    16% {
-        opacity: 0;
-    }
-    
-    25% {
-        opacity: 0;
-        stroke-dashoffset: 0;
-    }
-    30% {
-        opacity: 0;
-        stroke-dashoffset: 188; /* 次の画像に向けてリセット */
-    }
-    100% {
-        opacity: 0;
-        stroke-dashoffset: 188;
-    }
-    }
 
     #top .title{
         font-size: 1.4rem;
     }
 
-    #top .btn span {
-        font-size: 1.3rem;
-    }
 
     #top .back_img li p.name{
         font-size: 1rem;
     }
+
+
+    #top .back_img li a.btn  {
+        bottom: 7%;
+    }
+
 
     /* ---------- 円ボタン＋円周文字 ---------- */
     .circle-wrap {
@@ -1886,12 +1906,6 @@ button {
         height: 200px;
     }
 
-    .circle-text {
-        width: 200px;
-        height: 200px;
-        top: 50%;
-        left: 0;
-    }
 
     #philosophy .item .title {
         margin-left: 40px;
@@ -1946,6 +1960,10 @@ button {
         margin-right: 20px;
         padding-right: 10px;
         font-size: 1.2rem;
+    }
+
+    #portfoli .scroll-btn {
+        padding-right: 20px;
     }
 
     #portfoli .scllor {
@@ -2027,7 +2045,18 @@ button {
         padding-right: 10px;
         font-size: 1.2rem;
     }
+    .menber .title-container {
+        padding: 0 20px 20px 20px;
+    }
 
+    .title-container .title {
+        font-size: 1.1rem;
+    }
+
+    .menber .sec_item {
+        scroll-padding: 20px;
+        padding: 0 20px 30px 20px;
+    }
 
     .mail .item {
         text-align: left;
